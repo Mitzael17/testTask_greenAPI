@@ -1,0 +1,10 @@
+@import "../../rest/vars";
+@import "../../rest/functions";
+
+.input {
+  font-size: em(15, 16);
+  border-radius: em(5, 16);
+  background: $mainColor;
+  width: 100%;
+  padding: em(9, 12) em(12, 15)
+}

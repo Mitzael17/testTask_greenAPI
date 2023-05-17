@@ -1,0 +1,27 @@
+@import "../../rest/vars";
+@import "../../rest/functions";
+
+.button {
+  font-size: em(15, 16);
+  border-radius: em(5, 16);
+  background: $mainColor;
+  width: fit-content;
+  padding: em(9, 12) em(12, 15);
+  color: $textColor;
+  transition: .5s all;
+
+  &:active:not(:disabled),
+  &:hover:not(:disabled) {
+    background: $mainHoverColor;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: .7;
+  }
+
+}

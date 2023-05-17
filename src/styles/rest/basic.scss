@@ -1,0 +1,63 @@
+.flex {
+  display: flex;
+}
+
+.flex-j-c {
+  justify-content: center;
+}
+
+.flex-j-sb {
+  justify-content: space-between;
+}
+
+.flex-j-fe {
+  justify-content: flex-end;
+}
+
+.flex-j-fs {
+  justify-content: flex-start;
+}
+
+.flex-a-c {
+  align-items: center;
+}
+
+.flex-a-fe {
+  align-items: flex-end;
+}
+
+.flex-a-fs {
+  align-items: flex-start;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+@for $index from 1 through 10 {
+
+  .ml-#{$index * 5}px {
+    margin-left: $index * 5 + px;
+  }
+
+  .mr-#{$index * 5}px {
+    margin-right: $index * 5 + px;
+  }
+
+  .mt-#{$index * 5}px {
+    margin-top: $index * 5 + px;
+  }
+
+  .mb-#{$index * 5}px {
+    margin-bottom: $index * 5 + px;
+  }
+
+  .gap-#{$index * 5}px {
+    gap: $index * 5 + px;
+  }
+
+}
