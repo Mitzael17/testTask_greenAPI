@@ -1,4 +1,4 @@
-import React, {ButtonHTMLAttributes, memo} from 'react';
+import React, {memo} from 'react';
 import classes from '../../styles/modules/UI/Button.module.scss'
 import {ButtonProps} from "../../types/components/UI";
 

@@ -2,16 +2,17 @@ import React, {FormEvent, useContext, useEffect, useRef, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {UserDataContext} from "../contexts/UserDataContext";
 import {MAIN_ROUTE} from "../data/routes";
-import {header} from '../styles/modules/Header.module.scss';
+import headerClasses from '../styles/modules/Header.module.scss';
 import ContenteditableArea from "../components/UI/ContenteditableArea";
 import Button from "../components/UI/Button";
 import {deleteHTMLTags} from "../utils/deleteHTMLTags";
 import {$sendMessage} from "../API";
 import {dateToFormat} from "../utils/dateToFormat";
-import {Message} from "../types";
+import {Message as MessageType} from "../types";
 import {ChatsDataDispatchContext, ChatsDataContext} from "../contexts/ChatsDataContext";
 import {ChatReducerTypes} from "../types/components/Providers";
 import Loading from "../components/Loading";
+import Message from "../components/Message";
 
 const RoomPage = () => {
 
@@ -26,8 +27,8 @@ const RoomPage = () => {
     const chat = chats.find( chat => chat.id === id);
 
     const [messageText, setMessageText] = useState('');
-    const areaRef = useRef<HTMLDivElement>(null as HTMLDivElement);
 
+    const areaRef = useRef<HTMLDivElement>(null as HTMLDivElement);
     const chatRef = useRef<HTMLDivElement>(null as HTMLDivElement);
 
     const [isLoading, setIsLoading] = useState(false);
@@ -65,20 +66,28 @@ const RoomPage = () => {
 
     return (
         <div className='roomPage'>
-            <div className={`${header} roomPage__header`}>
+            <div className={`${headerClasses.header} roomPage__header`}>
                 Номер собеседника: {id}
             </div>
             <div className='roomPage__content' ref={chatRef}>
                 {chat?.messages.map( message => (
-                    <div className={`roomPage__message ${message.areYouSender ? 'roomPage__message--my': ''}`} key={message.id}>
-                        <div dangerouslySetInnerHTML={{__html: message.text}}></div>
-                        <div className={'roomPage__time'}>{message.date.slice(-8).replace(/:\d+$/, '')}</div>
-                    </div>
+                    <Message message={message} key={message.id} />
                 ))}
             </div>
             <form onSubmit={handlerSubmit} className='roomPage__form background-third'>
-                <ContenteditableArea value={messageText} setValue={setMessageText} placeholder='Введите текст сообщения' ref={areaRef} />
-                <Button color='green' disabled={!isAvailableToSubmit} type='submit'>{isLoading ? <Loading /> : 'Отправить'}</Button>
+                <ContenteditableArea
+                    value={messageText}
+                    setValue={setMessageText}
+                    placeholder='Введите текст сообщения'
+                    ref={areaRef}
+                />
+                <Button
+                    color='green'
+                    disabled={!isAvailableToSubmit}
+                    type='submit'
+                >
+                    {isLoading ? <Loading /> : 'Отправить'}
+                </Button>
             </form>
         </div>
     );
@@ -108,7 +117,7 @@ const RoomPage = () => {
 
         }
 
-        const message: Message = {
+        const message: MessageType = {
             id: result.idMessage,
             text: messageText,
             date: dateToFormat(new Date(), 'Y-m-d h:i:s'),

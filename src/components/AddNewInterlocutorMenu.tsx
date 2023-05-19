@@ -1,6 +1,6 @@
 import React, {FormEvent, memo, useContext, useEffect, useRef, useState} from 'react';
 import classes from "../styles/modules/AddNewInterlocutorMenu.module.scss";
-import {header} from "../styles/modules/Header.module.scss";
+import headerClasses from "../styles/modules/Header.module.scss";
 import {AddNewInterlocutorMenuProps} from "../types/components";
 import BackButton from "./UI/IconButtons/BackButton";
 import InputOnlyNumbers from "./UI/InputOnlyNumbers";
@@ -22,12 +22,16 @@ const AddNewInterlocutorMenu = memo(({isOpen, setIsOpen}: AddNewInterlocutorMenu
     const dispatchChats = useContext(ChatsDataDispatchContext);
 
     const [phone, setPhone] = useState('');
-
     const [messageText, setMessageText] = useState('');
+
     const areaRef = useRef<HTMLDivElement>(null as HTMLDivElement);
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
+
+    const navigator = useNavigate();
+
+    const isAvailableToSubmit = phone.length > 0 && messageText.length > 0 && !isLoading;
 
     useEffect(() => {
 
@@ -35,13 +39,9 @@ const AddNewInterlocutorMenu = memo(({isOpen, setIsOpen}: AddNewInterlocutorMenu
 
     }, [phone]);
 
-    const navigator = useNavigate();
-
-    const isAvailableToSubmit = phone.length > 0 && messageText.length > 0 && !isLoading;
-
     return (
         <div className={`${classes.menu} ${isOpen ? classes.active : ''}`}>
-            <div className={header}>
+            <div className={headerClasses.header}>
                 <BackButton setIsOpen={setIsOpen} />
                 <div className='font-600'>Новый собеседник</div>
             </div>
@@ -51,7 +51,9 @@ const AddNewInterlocutorMenu = memo(({isOpen, setIsOpen}: AddNewInterlocutorMenu
                 <Button type='submit' disabled={!isAvailableToSubmit} className='w-100' color='grey'>
                     {isLoading ? <Loading /> : 'Отправить сообщение'}
                 </Button>
-                {error.length > 0 && <div className='error'>{error}</div>}
+                { error.length > 0 &&
+                    <div className='error'>{error}</div>
+                }
             </form>
         </div>
     );
@@ -65,11 +67,12 @@ const AddNewInterlocutorMenu = memo(({isOpen, setIsOpen}: AddNewInterlocutorMenu
         setIsLoading(true);
 
         const chatId = `${phone}@c.us`;
+
         const cleanMessageText = deleteHTMLTags(messageText);
 
         const result = await $sendMessage(userData, {
-            message: cleanMessageText,
-            chatId
+            chatId,
+            message: cleanMessageText
         })
 
         setIsLoading(false);
@@ -80,6 +83,7 @@ const AddNewInterlocutorMenu = memo(({isOpen, setIsOpen}: AddNewInterlocutorMenu
             return;
 
         }
+
 
         const message = {
             id: result.idMessage,
@@ -96,6 +100,7 @@ const AddNewInterlocutorMenu = memo(({isOpen, setIsOpen}: AddNewInterlocutorMenu
                 message
             }
         });
+
 
         setPhone('');
         setMessageText('');

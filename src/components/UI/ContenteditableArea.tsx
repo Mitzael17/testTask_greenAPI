@@ -6,7 +6,7 @@ const ContenteditableArea = forwardRef(({placeholder, value, setValue, className
 
     const [showPlaceholder, setShowPlaceholder] = useState(true);
 
-    const shiftIsPressed = useRef(false);
+    const isPressedShift = useRef(false);
 
     useEffect(() => {
 
@@ -28,8 +28,17 @@ const ContenteditableArea = forwardRef(({placeholder, value, setValue, className
 
     return (
         <div className={classes.container}>
-            <div onKeyDown={handlerKeyDown} onKeyUp={handlerKeyUp} onInput={handlerInput} ref={ref} contentEditable={true} className={`${classes.area} ${className}`}></div>
-            {showPlaceholder && <div className={classes.placeholder}>{placeholder}</div>}
+            <div
+                onKeyDown={handlerKeyDown}
+                onKeyUp={handlerKeyUp}
+                onInput={handlerInput}
+                ref={ref}
+                contentEditable={true}
+                className={`${classes.area} ${className}`}
+            ></div>
+            { showPlaceholder &&
+                <div className={classes.placeholder}>{placeholder}</div>
+            }
         </div>
     );
 
@@ -39,14 +48,15 @@ const ContenteditableArea = forwardRef(({placeholder, value, setValue, className
 
     }
 
-
+    // Shift + Enter = Перенос строки
+    // Enter = Отправка формы
     function handlerKeyDown(event) {
 
-        if(shiftIsPressed.current) return;
+        if(isPressedShift.current) return;
 
         if(event.code === 'ShiftLeft') {
 
-            shiftIsPressed.current = true;
+            isPressedShift.current = true;
             return;
 
         }
@@ -63,7 +73,7 @@ const ContenteditableArea = forwardRef(({placeholder, value, setValue, className
 
     function handlerKeyUp(event) {
 
-        if(event.code === 'ShiftLeft') shiftIsPressed.current = false;
+        if(event.code === 'ShiftLeft') isPressedShift.current = false;
 
     }
 

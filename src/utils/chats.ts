@@ -7,13 +7,13 @@ export function getChats(idInstance: UserData['idInstance']): Chat[] {
 
 }
 
-
 export function addMessage(idInstance: UserData['idInstance'], id: Chat['id'], message: Message) {
 
     const chats = getChats(idInstance);
 
     let indexChat = chats.findIndex( (chat) => chat.id === id);
 
+    // Создаем новый чат
     if(indexChat === -1) {
 
         chats.unshift({id, messages: []});
@@ -21,6 +21,7 @@ export function addMessage(idInstance: UserData['idInstance'], id: Chat['id'], m
 
     }
 
+    // Не добавляем сообщение, если сообщение с таким же id уже существует
     if( chats[indexChat].messages.find( ({id}) => id === message.id ) !== undefined ) return false;
 
     chats[indexChat].messages.push(message);
@@ -28,16 +29,6 @@ export function addMessage(idInstance: UserData['idInstance'], id: Chat['id'], m
     rewriteChats(idInstance, [chats[indexChat], ...chats.filter( (chat, index) => index !== indexChat)]);
 
     return true;
-
-}
-
-export function getChat(idInstance: UserData['idInstance'], id: Chat['id']) {
-
-    const chats = getChats(idInstance);
-
-    const indexChat = chats.findIndex( chat => chat.id === id);
-
-    return indexChat !== -1 ? chats[indexChat] : undefined;
 
 }
 

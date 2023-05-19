@@ -5,7 +5,7 @@
 .roomPage {
 
   height: 100%;
-  background: url("../../../public/images/background-chat.png") 0 0 / auto repeat, $secondColor;
+  background: url("../../../images/background-chat.png") 0 0 / auto repeat, $secondColor;
   background-blend-mode: screen;
   display: flex;
   flex-direction: column;
@@ -38,36 +38,6 @@
       margin-top: auto;
     }
 
-  }
-
-
-  &__message {
-    display: inline-block;
-    padding: 10px;
-    border-radius: 5px;
-    max-width: 50%;
-    background: $thirdColor;
-    margin-right: auto;
-    word-break: break-word;
-    min-width: 50px;
-
-    @media screen and (max-width: 500px) {
-      max-width: 90%;
-    }
-
-  }
-
-  &__message--my {
-    margin-right: 0;
-    margin-left: auto;
-    background: $mainColor;
-  }
-
-
-  &__time {
-    font-size: .7em;
-    text-align: right;
-    margin-top: .5em;
   }
 
 }

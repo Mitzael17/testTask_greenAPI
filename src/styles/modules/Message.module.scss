@@ -1,0 +1,31 @@
+@import "../rest/vars";
+@import "../rest/functions";
+@import "../rest/mixins";
+
+.message {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 50%;
+  background: $thirdColor;
+  margin-right: auto;
+  word-break: break-word;
+  min-width: 50px;
+
+  @media screen and (max-width: 500px) {
+    max-width: 90%;
+  }
+
+  &.my {
+    margin-right: 0;
+    margin-left: auto;
+    background: $mainColor;
+  }
+
+}
+
+.time {
+  font-size: .7em;
+  text-align: right;
+  margin-top: .5em;
+}

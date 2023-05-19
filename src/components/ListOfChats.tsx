@@ -21,7 +21,7 @@ const ListOfChats = memo(() => {
         <div className={classes.container}>
             <div className={classes.searchContainer}>
                 <InputOnlyNumbers className='background-third' value={search} setValue={setSearch} placeholder='Поиск чата' />
-                {search.length > 0 &&
+                { search.length > 0 &&
                     <div onClick={() => setSearch('')} className={` ${classes.deleteIcon} deleteIcon`}>
                         <span></span>
                     </div>

@@ -1,5 +1,5 @@
 import React, {ProviderProps, ReducerState, useContext, useEffect, useReducer} from 'react';
-import {addMessage, deleteChat, getChats, rewriteChats} from "../../utils/chats";
+import {addMessage, deleteChat, getChats} from "../../utils/chats";
 import {UserDataContext} from "../../contexts/UserDataContext";
 import {ChatsDataDispatchContext, ChatsDataContext} from "../../contexts/ChatsDataContext";
 import {Chat, Message} from "../../types";
@@ -32,6 +32,7 @@ const ChatsDataProvider = ({children}: Pick<ProviderProps<Chat[]>, 'children'>) 
 
             }
 
+            // Игнорируем все оповещения, кроме текстовых сообщений
             if(!(notification.body?.messageData?.typeMessage === 'textMessage')) {
 
                 await $deleteNotification(userData, notification.receiptId);
@@ -48,7 +49,7 @@ const ChatsDataProvider = ({children}: Pick<ProviderProps<Chat[]>, 'children'>) 
                 text: notification.body.messageData.textMessageData.textMessage.replace(/\n/g, '<br>')
             }
 
-
+            // Для данного чата, chatId - это только номер
             const chatId = notification.body.senderData.chatId.substring(0, notification.body.senderData.chatId.indexOf('@'));
 
             dispatchChats({
@@ -88,7 +89,7 @@ const ChatsDataProvider = ({children}: Pick<ProviderProps<Chat[]>, 'children'>) 
                 const {chatId, message} = action.payload;
                 const indexChat = state.findIndex( chat => chat.id === chatId);
 
-                // Проверяем на наличие сообщения в localstorage и текущем state (это избавит нас от копий сообщений в strict mode).
+                // Проверяем есть ли данное сообщение в localstorage и текущем state.
                 if(
                     !addMessage(userData.idInstance, chatId, message) &&
                     state[indexChat]?.messages.find( ({id}) => message.id === id )
@@ -98,11 +99,13 @@ const ChatsDataProvider = ({children}: Pick<ProviderProps<Chat[]>, 'children'>) 
 
                 }
 
+                // Создаем новый чат
                 if(indexChat === -1) {
 
                     return [{id: chatId, messages: [message]}, ...state];
 
                 }
+
 
                 const newState = [...state];
 
@@ -110,6 +113,7 @@ const ChatsDataProvider = ({children}: Pick<ProviderProps<Chat[]>, 'children'>) 
                     ...state[indexChat],
                     messages: [...state[indexChat].messages, message]
                 };
+
 
                 return [newState[indexChat], ...newState.filter( (chat, index) => index !== indexChat)];
 

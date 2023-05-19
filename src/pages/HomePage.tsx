@@ -1,13 +1,13 @@
 import React from 'react';
-import image from "../assets/HomeBackground.svg";
+import rectangleBackground from "../assets/HomeBackground.svg";
 
 const HomePage = () => {
 
     return (
         <div className='homePage'>
             <div className='homePage__rectangle'>
-                <img src={image} alt="background"/>
-                <img src={image} alt="background"/>
+                <img src={rectangleBackground} alt="background"/>
+                <img src={rectangleBackground} alt="background"/>
             </div>
             <div className='homePage__content'>
                 <h2>Messenger Web</h2>

@@ -10,17 +10,17 @@ const Header = memo(() => {
 
     const {idInstance} = useContext(UserDataContext);
 
-    const [isOpenMenu, setIsOpenMenu] = useState(false);
+    const [isOpenAddNewInterlocutorMenu, setIsOpenAddNewInterlocutorMenu] = useState(false);
 
     return (
         <header className={classes.header}>
             <div>Id: {idInstance}</div>
             <div className={classes.bar}>
-                <AddChatButton setIsOpen={setIsOpenMenu} />
+                <AddChatButton setIsOpen={setIsOpenAddNewInterlocutorMenu} />
                 <ToggleNotificationButton />
                 <LogoutButton />
             </div>
-            <AddNewInterlocutorMenu isOpen={isOpenMenu} setIsOpen={setIsOpenMenu} />
+            <AddNewInterlocutorMenu isOpen={isOpenAddNewInterlocutorMenu} setIsOpen={setIsOpenAddNewInterlocutorMenu} />
         </header>
     );
 });

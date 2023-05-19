@@ -7,6 +7,7 @@ import {useLocation} from "react-router-dom";
 
 const Panel = () => {
 
+    // Состояние нужно только для мобильных устройств
     const [isOpenPanel, setIsOpenPanel] = useState(false);
 
     const location = useLocation();

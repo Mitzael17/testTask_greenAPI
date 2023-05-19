@@ -10,6 +10,7 @@ const ToggleNotificationButton = memo(() => {
     const userData = useContext(UserDataContext);
 
     const [isEnableNotifications, setIsEnableNotifications] = useState(false);
+
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -49,7 +50,11 @@ const ToggleNotificationButton = memo(() => {
             className={`${classes.icon} ${classes.bell} ${isEnableNotifications ? classes.active : ''}`}
         >
             <BellIcon />
-            {isLoading && <div className={classes.loading}><Loading diameter={24} /></div>}
+            { isLoading &&
+                <div className={classes.loading}>
+                    <Loading diameter={24} />
+                </div>
+            }
             <span className={classes.line}></span>
         </div>
     );
