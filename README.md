@@ -16,7 +16,7 @@ The application was created to get and send messages by using [Green API](https:
 
 1. Clone the repository and install the dependencies
 ```bash
-npm run install
+npm install
 ```
 2. Start the frontend application locally
 ```bash
