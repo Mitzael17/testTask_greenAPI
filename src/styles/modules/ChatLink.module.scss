@@ -1,0 +1,41 @@
+@import '../rest/mixins';
+@import '../rest/vars';
+@import '../rest/functions';
+
+.link {
+  display: block;
+  padding: 0 40px 0 $defaultPaddings;
+  transition: .3s all;
+  max-width: 100%;
+  position: relative;
+
+  .container {
+    padding: $defaultPaddings 0;
+  }
+
+  &:not(:last-child) {
+    .container {
+      border-bottom: 1px solid $thirdColor;
+    }
+  }
+
+
+  &:hover {
+    background: $thirdColor;
+  }
+
+}
+
+
+.title {
+  font-weight: 500;
+  letter-spacing: .05em;
+}
+
+
+.lastMessage {
+  font-size: em(1, 16);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 5px;
+}

@@ -10,12 +10,13 @@
 
 // Pages
 @import 'pages/loginPage';
-
+@import 'pages/homePage';
+@import 'pages/roomPage';
 
 
 html {
   font-size: 16px;
-  background: $mainColor;
+  background: linear-gradient(180deg, $secondColor 20%, $thirdColor 22%);
   color: $textColor;
   font-family: 'Open Sans', sans-serif;
 }
@@ -36,12 +37,69 @@ h1 {
 }
 
 
+h2 {
+  font-size: 2em;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+
+p {
+  font-size: em(18, 16);
+  line-height: 1.5;
+}
+
+
 .link {
 
   transition: .3s all;
 
   &:hover {
     color: #00ffff;
+  }
+
+}
+
+.error {
+  border-radius: em(5, 16);
+  color: #ffff;
+  background: darkred;
+  padding: em(9, 16) em(12, 16);
+}
+
+
+.background-third {
+  background: $thirdColor;
+}
+
+
+.navLink.active {
+  background: $thirdColor;
+}
+
+
+.deleteIcon {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+
+  &:before,
+  span {
+    width: 100%;
+    height: 2px;
+    background: #ff2f00;
+    @include useAbsolutePosition(50%, 50%)
+  }
+
+  span {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:before {
+    content: '';
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 
 }

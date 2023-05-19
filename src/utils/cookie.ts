@@ -1,6 +1,9 @@
 import {CookieOptions} from "../types/utils/cookie";
+import {MAIN_ROUTE} from "../data/routes";
 
 export function setCookie(name: string, value: string, options: CookieOptions = {}): void {
+
+    options.path = options.path ?? MAIN_ROUTE;
 
     let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
 

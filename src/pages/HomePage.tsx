@@ -1,17 +1,17 @@
-import React, {useContext} from 'react';
-import {UserDataContext} from "../contexts/UserDataContext";
+import React from 'react';
+import image from "../assets/HomeBackground.svg";
 
 const HomePage = () => {
 
-    const userData = useContext(UserDataContext);
-
     return (
-        <div>
-            <div>
-                id: {userData.idInstance}
+        <div className='homePage'>
+            <div className='homePage__rectangle'>
+                <img src={image} alt="background"/>
+                <img src={image} alt="background"/>
             </div>
-            <div>
-                token: {userData.apiTokenInstance}
+            <div className='homePage__content'>
+                <h2>Messenger Web</h2>
+                <p>Отправляйте и получайте сообщения с помощью GREEN API</p>
             </div>
         </div>
     );

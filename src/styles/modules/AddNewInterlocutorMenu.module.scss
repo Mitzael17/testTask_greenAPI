@@ -1,0 +1,25 @@
+@import '../rest/mixins';
+@import '../rest/vars';
+@import '../rest/functions';
+
+.menu {
+  @include useAbsolutePosition();
+  background: $mainColor;
+  height: 100%;
+  width: 100%;
+  transition: .5s all;
+  transform: translateX(-100%);
+  z-index: 5;
+
+  &.active {
+    transform: translateX(0);
+  }
+
+}
+
+.form {
+  padding: $defaultPaddings;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import AppRouter from "./components/AppRouter";
 import UserDataProvider from "./components/Providers/UserDataProvider";
+import {rewriteChats} from "./utils/chats";
 
 const App = () => {
 

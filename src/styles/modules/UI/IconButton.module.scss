@@ -1,0 +1,107 @@
+@import "../../rest/vars";
+@import "../../rest/functions";
+@import "../../rest/mixins";
+
+.icon {
+  width: em(24, 16);
+  height: em(24, 16);
+  cursor: pointer;
+
+  .loading {
+    @include useAbsolutePosition(50%, 50%);
+    transform: translate(-50%, -50%);
+    cursor: default;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: $thirdColor;
+  }
+
+  &:hover {
+
+    svg {
+      stroke: $secondColor;
+    }
+
+
+  }
+
+  svg {
+    transition: .3s all;
+    fill: transparent;
+    stroke: $textColor;
+  }
+
+  &.bell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .line {
+      @include useAbsolutePosition(0%, 0%);
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(45deg);
+
+      &:before {
+        content: '';
+        transition: .5s transform, .3s background-color;
+        background: #000;
+        height: 2px;
+        width: 100%;
+        transform: scaleX(1);
+        transform-origin: left top;
+
+      }
+
+    }
+
+
+
+    &.active {
+
+      .line:before {
+        transform: scaleX(0);
+        transform-origin: right bottom;
+
+      }
+
+
+    }
+
+    &:hover {
+
+      .line:before {
+        background: $secondColor;
+      }
+
+      svg{
+        fill: $secondColor;
+        stroke: none;
+
+      }
+    }
+
+    svg {
+      fill: $textColor;
+      stroke: none;
+    }
+
+
+
+  }
+
+  &.logout {
+
+    svg {
+      stroke-width: 6px;
+    }
+
+  }
+
+}

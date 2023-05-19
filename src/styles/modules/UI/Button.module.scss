@@ -4,15 +4,41 @@
 .button {
   font-size: em(15, 16);
   border-radius: em(5, 16);
-  background: $mainColor;
   width: fit-content;
   padding: em(9, 12) em(12, 15);
-  color: $textColor;
   transition: .5s all;
+  min-width: em(70, 16);
 
-  &:active:not(:disabled),
-  &:hover:not(:disabled) {
-    background: $mainHoverColor;
+  &.grey {
+    background: $thirdColor;
+    color: $textColor;
+
+    &:active:not(:disabled),
+    &:hover:not(:disabled) {
+      background: $mainHoverColor;
+    }
+  }
+
+  &.white {
+    background: $mainColor;
+    color: $textColor;
+
+    &:active:not(:disabled),
+    &:hover:not(:disabled) {
+      background: $mainHoverColor;
+    }
+
+  }
+
+
+  &.green {
+    background: $secondColor;
+    color: $mainColor;
+
+    &:active:not(:disabled),
+    &:hover:not(:disabled) {
+      background: $secondHoverColor;
+    }
   }
 
   &:active:not(:disabled) {
@@ -23,5 +49,6 @@
     cursor: default;
     opacity: .7;
   }
+
 
 }

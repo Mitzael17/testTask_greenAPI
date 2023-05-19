@@ -1,0 +1,36 @@
+@import '../rest/mixins';
+@import '../rest/vars';
+@import '../rest/functions';
+
+.searchContainer {
+  padding: $defaultPaddings $defaultPaddings 0;
+  position: relative;
+
+  input {
+    padding-right: em(40, 15);
+  }
+
+  .deleteIcon {
+    top: initial;
+    bottom: 10px;
+    right: 30px;
+  }
+
+}
+
+
+.container {
+  flex: 0 1 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.list {
+  overflow: auto;
+  margin-top: 10px;
+  border-top: 1px solid $thirdColor;
+  flex: 0 1 100%;
+  @include useCustomScrollBar();
+  background: $mainColor;
+}

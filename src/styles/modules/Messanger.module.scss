@@ -1,0 +1,89 @@
+@import '../rest/mixins';
+@import '../rest/vars';
+@import '../rest/functions';
+
+.messenger {
+  background: $mainColor;
+  max-width: 1600px;
+  margin: auto;
+  width: 97vw;
+  height: vh(97);
+  min-height: 500px;
+  display: flex;
+  box-shadow: 0 0 50px 1px rgba(0, 0, 0, 0.4);
+
+  @media screen and (max-width: 1440px) {
+    width: 100%;
+    height: vh(100);
+  }
+
+}
+
+
+.panel {
+  flex: 0 0 45%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background: $mainColor;
+
+  @media screen and (max-width: $panelMedia) {
+    @include useAbsolutePosition();
+    height: 100%;
+    z-index: 5;
+    width: 50%;
+    min-width: 240px;
+    transform: translateX(-100%);
+    transition: .5s all;
+    overflow: initial;
+
+    &.active {
+      transform: translateX(0);
+    }
+
+  }
+
+}
+
+
+.button {
+  display: none;
+  @include useAbsolutePosition(100%, 50%);
+  width: 60px;
+  transform: translate(-50%, -50%);
+  height: 60px;
+  background: $mainColor;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: .5;
+  border: 1px solid #000;
+
+  &.active {
+    border-color: transparent;
+    opacity: 1;
+    svg {
+      transform: translate(-100%, -50%) rotate(0deg);
+    }
+  }
+
+  svg {
+    transition: .5s all;
+    stroke: #000;
+    @include useAbsolutePosition(95%, 50%);
+    transform: translate(-100%, -50%) rotate(180deg);
+  }
+
+  @media screen and (max-width: $panelMedia) {
+    display: block;
+  }
+
+}
+
+
+.content {
+  flex: 1 0 55%;
+}
+
+
