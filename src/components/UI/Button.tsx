@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import {memo} from 'react';
 import classes from '../../styles/modules/UI/Button.module.scss'
 import {ButtonProps} from "../../types/components/UI";
 
@@ -11,11 +11,7 @@ const Button = memo(({children, className, type = 'button', color = 'white', ...
     }
 
     return (
-        <button
-            className={`${className} ${classes.button} ${classesColor[color]}`}
-            type={type}
-            {...props}
-        >
+        <button className={`${className} ${classes.button} ${classesColor[color]}`} type={type}{...props}>
             {children}
         </button>
     );

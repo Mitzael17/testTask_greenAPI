@@ -23,7 +23,7 @@ export interface ContenteditableAreaProps {
 }
 
 
-export interface ButtonProps extends ButtonHTMLAttributes<string> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
     color?: 'white'|'green'|'grey'
 

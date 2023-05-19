@@ -26,7 +26,7 @@ export function addMessage(idInstance: UserData['idInstance'], id: Chat['id'], m
 
     chats[indexChat].messages.push(message);
 
-    rewriteChats(idInstance, [chats[indexChat], ...chats.filter( (chat, index) => index !== indexChat)]);
+    rewriteChats(idInstance, [chats[indexChat], ...chats.filter( (_, index) => index !== indexChat)]);
 
     return true;
 

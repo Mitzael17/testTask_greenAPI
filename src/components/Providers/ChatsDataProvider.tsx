@@ -1,4 +1,9 @@
-import React, {ProviderProps, ReducerState, useContext, useEffect, useReducer} from 'react';
+import {
+    ProviderProps,
+    useContext,
+    useEffect,
+    useReducer
+} from 'react';
 import {addMessage, deleteChat, getChats} from "../../utils/chats";
 import {UserDataContext} from "../../contexts/UserDataContext";
 import {ChatsDataDispatchContext, ChatsDataContext} from "../../contexts/ChatsDataContext";
@@ -11,7 +16,7 @@ const ChatsDataProvider = ({children}: Pick<ProviderProps<Chat[]>, 'children'>) 
 
     const userData = useContext(UserDataContext);
 
-    const [chats, dispatchChats] = useReducer(chatsReducer, getChats(userData.idInstance) as ReducerState<Chat[]>);
+    const [chats, dispatchChats] = useReducer(chatsReducer, getChats(userData.idInstance));
 
     useEffect( () => {
 
@@ -115,7 +120,7 @@ const ChatsDataProvider = ({children}: Pick<ProviderProps<Chat[]>, 'children'>) 
                 };
 
 
-                return [newState[indexChat], ...newState.filter( (chat, index) => index !== indexChat)];
+                return [newState[indexChat], ...newState.filter( (_, index) => index !== indexChat)];
 
             }
 

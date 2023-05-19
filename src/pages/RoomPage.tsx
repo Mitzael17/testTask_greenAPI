@@ -1,4 +1,4 @@
-import React, {FormEvent, useContext, useEffect, useRef, useState} from 'react';
+import {FormEvent, useContext, useEffect, useRef, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {UserDataContext} from "../contexts/UserDataContext";
 import {MAIN_ROUTE} from "../data/routes";
@@ -13,6 +13,7 @@ import {ChatsDataDispatchContext, ChatsDataContext} from "../contexts/ChatsDataC
 import {ChatReducerTypes} from "../types/components/Providers";
 import Loading from "../components/Loading";
 import Message from "../components/Message";
+import backgroundImage from "../assets/background-chat.png"
 
 const RoomPage = () => {
 
@@ -21,15 +22,15 @@ const RoomPage = () => {
     const chats = useContext(ChatsDataContext);
     const dispatchChats = useContext(ChatsDataDispatchContext);
 
-    const {id}: {id: string} = useParams();
+    const {id} = useParams();
     const navigator = useNavigate();
 
     const chat = chats.find( chat => chat.id === id);
 
     const [messageText, setMessageText] = useState('');
 
-    const areaRef = useRef<HTMLDivElement>(null as HTMLDivElement);
-    const chatRef = useRef<HTMLDivElement>(null as HTMLDivElement);
+    const areaRef = useRef<HTMLDivElement>({} as HTMLDivElement);
+    const chatRef = useRef<HTMLDivElement>({} as HTMLDivElement);
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -65,7 +66,7 @@ const RoomPage = () => {
     }, [chats]);
 
     return (
-        <div className='roomPage'>
+        <div className='roomPage' style={{backgroundImage: `url('${backgroundImage}')`}}>
             <div className={`${headerClasses.header} roomPage__header`}>
                 Номер собеседника: {id}
             </div>
@@ -96,7 +97,7 @@ const RoomPage = () => {
 
         event.preventDefault();
 
-        if(!isAvailableToSubmit) return;
+        if(!isAvailableToSubmit || id === undefined || chat === undefined) return;
 
         setIsLoading(true);
 

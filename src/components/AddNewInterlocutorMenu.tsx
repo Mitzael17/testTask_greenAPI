@@ -1,4 +1,4 @@
-import React, {FormEvent, memo, useContext, useEffect, useRef, useState} from 'react';
+import {FormEvent, memo, useContext, useEffect, useRef, useState} from 'react';
 import classes from "../styles/modules/AddNewInterlocutorMenu.module.scss";
 import headerClasses from "../styles/modules/Header.module.scss";
 import {AddNewInterlocutorMenuProps} from "../types/components";
@@ -24,7 +24,7 @@ const AddNewInterlocutorMenu = memo(({isOpen, setIsOpen}: AddNewInterlocutorMenu
     const [phone, setPhone] = useState('');
     const [messageText, setMessageText] = useState('');
 
-    const areaRef = useRef<HTMLDivElement>(null as HTMLDivElement);
+    const areaRef = useRef<HTMLDivElement>({} as HTMLDivElement);
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');

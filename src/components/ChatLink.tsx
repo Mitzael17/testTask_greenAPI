@@ -1,4 +1,4 @@
-import React, {memo, useContext} from 'react';
+import {memo, MouseEvent, useContext} from 'react';
 import {NavLink} from "react-router-dom";
 import classes from '../styles/modules/ChatLink.module.scss'
 import {Chat} from "../types";
@@ -15,7 +15,7 @@ const ChatLink = memo(({chat}: {chat: Chat}) => {
         <NavLink to={CHATROOM_ROUTE + chat.id} className={`${classes.link} navLink`}>
             <div className={classes.container}>
                 <div className={classes.title}>{chat.id}</div>
-                <div className={classes.lastMessage}>{deleteHTMLTags(chat.messages.at(-1).text)}</div>
+                <div className={classes.lastMessage}>{deleteHTMLTags(chat.messages.at(-1)?.text || '')}</div>
                 <div onClick={handlerDeleteChat} className='deleteIcon'>
                     <span></span>
                 </div>
@@ -24,7 +24,7 @@ const ChatLink = memo(({chat}: {chat: Chat}) => {
     );
 
 
-    function handlerDeleteChat(event) {
+    function handlerDeleteChat(event: MouseEvent) {
 
         event.preventDefault();
 

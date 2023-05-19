@@ -1,4 +1,4 @@
-import React, {memo, useContext, useState} from 'react';
+import {memo, useContext, useState} from 'react';
 import {UserDataContext} from "../contexts/UserDataContext";
 import classes from '../styles/modules/Header.module.scss'
 import LogoutButton from "./UI/IconButtons/LogoutButton";

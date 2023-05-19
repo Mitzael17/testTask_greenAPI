@@ -1,4 +1,3 @@
-import React from 'react';
 import classes from '../styles/modules/Loading.module.scss'
 
 const Loading = ({diameter = 20}) => {

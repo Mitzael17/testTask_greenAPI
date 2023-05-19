@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import {memo} from 'react';
 import classes from '../../styles/modules/UI/Input.module.scss'
 import {InputProps} from "../../types/components/UI";
 

@@ -1,4 +1,4 @@
-import React, {memo, useContext, useMemo, useState} from 'react';
+import {memo, useContext, useMemo, useState} from 'react';
 import classes from '../styles/modules/ListOfChats.module.scss'
 import ChatLink from "./ChatLink";
 import {ChatsDataContext} from "../contexts/ChatsDataContext";

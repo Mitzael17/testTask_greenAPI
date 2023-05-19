@@ -1,4 +1,4 @@
-import React, {ProviderProps, useState} from 'react';
+import {ProviderProps, useState} from 'react';
 import {UserData} from "../../types/contexts";
 import {UserDataChangeContext, UserDataContext} from "../../contexts/UserDataContext";
 import {getCookie} from "../../utils/cookie";

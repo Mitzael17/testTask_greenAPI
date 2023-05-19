@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import RoomPage from "../pages/RoomPage";

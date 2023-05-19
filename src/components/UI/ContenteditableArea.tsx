@@ -1,4 +1,4 @@
-import React, {FormEvent, ForwardedRef, forwardRef, useEffect, useRef, useState} from 'react';
+import {FormEvent, ForwardedRef, KeyboardEvent, forwardRef, useEffect, useRef, useState} from 'react';
 import classes from '../../styles/modules/UI/ContenteditableArea.module.scss'
 import {ContenteditableAreaProps} from "../../types/components/UI";
 
@@ -50,7 +50,7 @@ const ContenteditableArea = forwardRef(({placeholder, value, setValue, className
 
     // Shift + Enter = Перенос строки
     // Enter = Отправка формы
-    function handlerKeyDown(event) {
+    function handlerKeyDown(event: KeyboardEvent) {
 
         if(isPressedShift.current) return;
 
@@ -71,7 +71,7 @@ const ContenteditableArea = forwardRef(({placeholder, value, setValue, className
 
     }
 
-    function handlerKeyUp(event) {
+    function handlerKeyUp(event: KeyboardEvent) {
 
         if(event.code === 'ShiftLeft') isPressedShift.current = false;
 

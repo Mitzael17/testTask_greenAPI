@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import {memo} from 'react';
 import classes from '../../../styles/modules/UI/IconButton.module.scss'
 import {AddNewInterlocutorMenuProps} from "../../../types/components";
 import ArrowIcon from "../../Icons/ArrowIcon";

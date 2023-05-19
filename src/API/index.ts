@@ -48,7 +48,7 @@ export async function $sendMessage(userData: UserData, args: SendMessageArgument
 
     const result: false | SendMessageResponse | SendMessageError = await $API(Endpoints.sendMessage, {userData, body: JSON.stringify(args), method: Methods.post});
 
-    if('statusCode' in result || !result) return false;
+    if(!result || 'statusCode' in result) return false;
 
     return result;
 

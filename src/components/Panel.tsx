@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import classes from "../styles/modules/Messanger.module.scss";
 import Header from "./Header";
 import ListOfChats from "./ListOfChats";

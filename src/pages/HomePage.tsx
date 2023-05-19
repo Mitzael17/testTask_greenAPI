@@ -1,4 +1,3 @@
-import React from 'react';
 import rectangleBackground from "../assets/HomeBackground.svg";
 
 const HomePage = () => {

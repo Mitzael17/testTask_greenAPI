@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import {memo} from 'react';
 import {CheckboxProps} from "../../types/components/UI";
 import classes from '../../styles/modules/UI/Checkbox.module.scss'
 

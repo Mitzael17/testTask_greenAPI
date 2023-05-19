@@ -5,7 +5,9 @@
 .roomPage {
 
   height: 100%;
-  background: url("../../../images/background-chat.png") 0 0 / auto repeat, $secondColor;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-color: $secondColor;
   background-blend-mode: screen;
   display: flex;
   flex-direction: column;

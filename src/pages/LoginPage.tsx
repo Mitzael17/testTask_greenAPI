@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import {FormEvent, useContext, useEffect, useState} from 'react';
 import Input from "../components/UI/Input";
 import Button from "../components/UI/Button";
 import Checkbox from "../components/UI/Checkbox";
@@ -60,7 +60,7 @@ const LoginPage = () => {
         </form>
     );
 
-    async function handlerSubmit(event) {
+    async function handlerSubmit(event: FormEvent) {
 
         event.preventDefault();
 

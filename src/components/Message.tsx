@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import {memo} from 'react';
 import {Message as MessageType} from "../types";
 import classes from "../styles/modules/Message.module.scss";
 

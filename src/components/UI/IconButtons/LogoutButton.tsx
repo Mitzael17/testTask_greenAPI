@@ -1,4 +1,4 @@
-import React, {memo, useContext} from 'react';
+import {memo, useContext} from 'react';
 import {UserDataChangeContext} from "../../../contexts/UserDataContext";
 import {UserData} from "../../../types/contexts";
 import {deleteCookie} from "../../../utils/cookie";

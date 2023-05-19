@@ -1,4 +1,4 @@
-import React, {memo, useContext, useEffect, useState} from 'react';
+import {memo, useContext, useEffect, useState} from 'react';
 import classes from "../../../styles/modules/UI/IconButton.module.scss";
 import BellIcon from "../../Icons/BellIcon";
 import {$getSettings, $setSettings} from "../../../API";
